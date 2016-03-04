@@ -17,38 +17,6 @@
             endingLineNumber = "50"
             landmarkName = "testCulculateDivisionByZero()"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "divisionTests.onlineCalculatorTest.(testCulculateDivisionByZero (divisionTests.onlineCalculatorTest) -&gt; () -&gt; ()).(closure #1)"
-                  moduleName = "divisionTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Icaro/Desktop/Udemy/division/divisionTests/onlineCalculatorTest.swift"
-                  timestampString = "476597676.543736"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "269">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "divisionTests.onlineCalculatorTest.(testCulculateDivisionByZero (divisionTests.onlineCalculatorTest) -&gt; () -&gt; ()).(closure #1).(implicit closure #1)"
-                  moduleName = "divisionTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Icaro/Desktop/Udemy/division/divisionTests/onlineCalculatorTest.swift"
-                  timestampString = "476597676.544202"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "21">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

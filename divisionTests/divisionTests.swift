@@ -6,7 +6,7 @@
 //  Copyright © 2016 Swift Next Step. All rights reserved.
 //
 
-import XCTest
+import XCTest 
 @testable import division
 
 class divisionTests: XCTestCase {
