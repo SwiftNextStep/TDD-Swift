@@ -11,9 +11,6 @@ import UIKit
 class CalculatorBrain: NSObject {
     
     func divideTwoNumbers(dividend dividend: Int , divisor: Int, completion:((result:Float?, error:NSError?)->Void)) {
-       
-        NSThread.sleepForTimeInterval(1)
-        
         if divisor == 0{
             let error = NSError(domain: "Error dividing by Zero", code: 1, userInfo: nil)
             return completion(result: nil, error: error)

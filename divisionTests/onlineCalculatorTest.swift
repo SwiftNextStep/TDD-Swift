@@ -42,17 +42,15 @@ class onlineCalculatorTest: XCTestCase {
         
         let expectation = expectationWithDescription("Expected callback from API fail")
         
-        onlineCalc.calculateWithTwoNumbers(dividend: 10, divisor: 0) { (respose, error) -> () in
-            expectation.fulfill()
+        onlineCalc.calculateWithTwoNumbers(dividend: 10, divisor: 0) { (response, error) -> () in
             if error == nil{
                 XCTFail()
             } else{
-                XCTAssert(1 == 2, "Response should be 'Division by Zero")
+                XCTAssert(error?.domain == "Division by Zero", "Response should be 'division by Zero'")
+                expectation.fulfill()
             }
         }
-        
         waitForExpectationsWithTimeout(3, handler: nil)
-        
     }
     
 }

@@ -9,28 +9,51 @@
 import XCTest
 
 class divisionUITests: XCTestCase {
+    var app = XCUIApplication()
+    var device = XCUIDevice()
+    var element = XCUIElement()
         
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.launch()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testMainScreen(){
+        let labelText = app.staticTexts["Enter two numbers:"]
+        XCTAssertTrue(labelText.exists, "Should be in the main screen")
     }
     
+    func testCalculate10divideBy2LabelResult(){
+        let div1 = app.textFields.elementBoundByIndex(0)
+        let div2 = app.textFields.elementBoundByIndex(1)
+        div1.tap()
+        div1.typeText("10")
+        div2.tap()
+        div2.typeText("2")
+        app.buttons["Calculate"].tap()
+        XCTAssertTrue(app.staticTexts["5"].exists, "Result should be displaying '5'")
+    }
+    
+    func testCalculate20divideBy10LabelResult(){
+        
+        let element = app.otherElements.containingType(.Image, identifier:"chalkboard").childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other).element
+        let textField = element.childrenMatchingType(.TextField).elementBoundByIndex(0)
+        textField.tap()
+        
+        let moreNumbersKey = app.keys["more, numbers"]
+        moreNumbersKey.tap()
+        textField.typeText("20")
+        
+        let textField2 = element.childrenMatchingType(.TextField).elementBoundByIndex(1)
+        textField2.tap()
+        moreNumbersKey.tap()
+        textField2.typeText("10")
+        app.buttons["Calculate"].tap()
+        XCTAssertTrue(app.staticTexts["2"].exists, "Result should be displaying '2'")
+    }
 }
