@@ -21,13 +21,13 @@ class onlineCalculatorTest: XCTestCase {
     }
     
     func testRetiveURLFor10DivideBy2(){
-        let url = NSURL(string: "https://www.calcatraz.com/calculator/api?c=10%2F2")
+        let url = URL(string: "https://www.calcatraz.com/calculator/api?c=10%2F2")
         let response = onlineCalc.retiveURLForDivision(dividend: 10 , divisor: 2)
-        XCTAssert(url == response, "URL must be equals to 'https://www.calcatraz.com/calculator/api?c=10%2F2'")
+        XCTAssert(url! == response as URL, "URL must be equals to 'https://www.calcatraz.com/calculator/api?c=10%2F2'")
     }
     
     func testRetiveURLFor10DivideBy2ShouldFail(){
-        let url = NSURL(string: "https://www.calcatraz.com/calculator/api?c=10%2F2")
+        let url = URL(string: "https://www.calcatraz.com/calculator/api?c=10%2F2")
         let response = onlineCalc.retiveURLForDivision(dividend: 20 , divisor: 2)
         XCTAssert(url != response, "URL must be not equals to 'https://www.calcatraz.com/calculator/api?c=10%2F2'")
     }
@@ -40,7 +40,7 @@ class onlineCalculatorTest: XCTestCase {
     
     func testCulculateDivisionByZero(){
         
-        let expectation = expectationWithDescription("Expected callback from API fail")
+        let expectation = self.expectation(description: "Expected callback from API fail")
         
         onlineCalc.calculateWithTwoNumbers(dividend: 10, divisor: 0) { (response, error) -> () in
             if error == nil{
@@ -50,7 +50,7 @@ class onlineCalculatorTest: XCTestCase {
                 expectation.fulfill()
             }
         }
-        waitForExpectationsWithTimeout(3, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
     }
     
 }

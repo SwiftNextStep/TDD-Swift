@@ -35,7 +35,7 @@ class divisionTests: XCTestCase {
     }
     
     func testTestDivisionTime(){
-        measureBlock {
+        measure {
             self.calculatorBrain.divideTwoNumbers(dividend: 20, divisor: 2, completion: { (result, error) -> Void in
                 
             })

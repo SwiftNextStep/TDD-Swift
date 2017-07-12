@@ -10,17 +10,17 @@ import UIKit
 
 class OnLineCalculatorBrain: NSObject {
     
-    func retiveURLForDivision(dividend dividend: Int , divisor: Int) -> NSURL{
-        return NSURL(string: "https://www.calcatraz.com/calculator/api?c=\(dividend)%2F\(divisor)")!
+    func retiveURLForDivision(dividend: Int , divisor: Int) -> URL{
+        return URL(string: "https://www.calcatraz.com/calculator/api?c=\(dividend)%2F\(divisor)")!
     }
     
-    func calculateWithTwoNumbers(dividend dividend: Int , divisor: Int, completionHandler:(Float?, NSError?) ->()){
+    func calculateWithTwoNumbers(dividend: Int , divisor: Int, completionHandler:@escaping (Float?, NSError?) ->()){
         let url = retiveURLForDivision(dividend: dividend, divisor: divisor)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+        let session = URLSession.shared
+        let task = session.dataTask(with: url, completionHandler: { (data:Data?, response:URLResponse?, error:NSError?) -> Void in
             if error == nil{
                 if let data = data{
-                    let sValue = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    let sValue = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
                     let fValue = sValue?.floatValue
                     if fValue == nil || sValue!.length > 10{
                         let error = NSError(domain: "Division by Zero", code: 1, userInfo: nil)
@@ -31,10 +31,10 @@ class OnLineCalculatorBrain: NSObject {
                 let localError = NSError(domain: "No data was found", code: 1, userInfo: nil)
                 return completionHandler(nil, localError)
             } else{
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "")
                 return completionHandler(nil, error)
             }
-        }
+        } as! (Data?, URLResponse?, Error?) -> Void) 
         task.resume()
     }
 }

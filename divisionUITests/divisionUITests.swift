@@ -29,8 +29,8 @@ class divisionUITests: XCTestCase {
     }
     
     func testCalculate10divideBy2LabelResult(){
-        let div1 = app.textFields.elementBoundByIndex(0)
-        let div2 = app.textFields.elementBoundByIndex(1)
+        let div1 = app.textFields.element(boundBy: 0)
+        let div2 = app.textFields.element(boundBy: 1)
         div1.tap()
         div1.typeText("10")
         div2.tap()
@@ -41,15 +41,15 @@ class divisionUITests: XCTestCase {
     
     func testCalculate20divideBy10LabelResult(){
         
-        let element = app.otherElements.containingType(.Image, identifier:"chalkboard").childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other).element
-        let textField = element.childrenMatchingType(.TextField).elementBoundByIndex(0)
+        let element = app.otherElements.containing(.image, identifier:"chalkboard").children(matching: .other).element(boundBy: 1).children(matching: .other).element
+        let textField = element.children(matching: .textField).element(boundBy: 0)
         textField.tap()
         
         let moreNumbersKey = app.keys["more, numbers"]
         moreNumbersKey.tap()
         textField.typeText("20")
         
-        let textField2 = element.childrenMatchingType(.TextField).elementBoundByIndex(1)
+        let textField2 = element.children(matching: .textField).element(boundBy: 1)
         textField2.tap()
         moreNumbersKey.tap()
         textField2.typeText("10")
